@@ -1,7 +1,6 @@
 package com.example.scribbl;
 
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Html;
@@ -18,17 +17,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.res.ResourcesCompat;
 
 import com.example.scribbl.Paint.PaintView;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
@@ -52,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        //setting ActionBar Setting
         ActionBar actionBar = getSupportActionBar();
         actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorPrimaryDark)));
         actionBar.setTitle(Html.fromHtml("<font color=\"#8ED4E3\">" + "Let´s draw" + "</font>"));
@@ -59,8 +56,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         id = getIntent().getStringExtra("SignIn_ID");
-        timer = (TextView) findViewById(R.id.textTime);
-        player = (TextView) findViewById(R.id.textPlayer);
+        timer = findViewById(R.id.textTime);
+        player = findViewById(R.id.textPlayer);
 
         db = FirebaseFirestore.getInstance();
 
@@ -72,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
-        paintView = (PaintView) findViewById(R.id.paintView);
+        paintView = findViewById(R.id.paintView);
         DisplayMetrics metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
         paintView.init(metrics);
@@ -88,13 +85,13 @@ public class MainActivity extends AppCompatActivity {
 
     private void initBtns() {
 
-        final Button btn_Black = (Button) findViewById(R.id.btnBlack);
-        final Button btn_Pink = (Button) findViewById(R.id.btnPink);
-        final Button btn_Red = (Button) findViewById(R.id.btnRed);
-        final Button btn_Green = (Button) findViewById(R.id.btnGreen);
-        final Button btn_Blue = (Button) findViewById(R.id.btnBlue);
-        final Button btn_Yellow = (Button) findViewById(R.id.btnYellow);
-        final Button btn_Orange = (Button) findViewById(R.id.btnOrange);
+        final Button btn_Black = findViewById(R.id.btnBlack);
+        final Button btn_Pink = findViewById(R.id.btnPink);
+        final Button btn_Red = findViewById(R.id.btnRed);
+        final Button btn_Green = findViewById(R.id.btnGreen);
+        final Button btn_Blue = findViewById(R.id.btnBlue);
+        final Button btn_Yellow = findViewById(R.id.btnYellow);
+        final Button btn_Orange = findViewById(R.id.btnOrange);
 
 
         btn_Black.setOnClickListener(new View.OnClickListener() {
@@ -268,7 +265,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        final Button btn_Rubber = (Button) findViewById(R.id.btnRubber);
+        final Button btn_Rubber = findViewById(R.id.btnRubber);
         btn_Rubber.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -393,7 +390,7 @@ public class MainActivity extends AppCompatActivity {
                     Log.d("DATA", "Current data: " + snapshot.getString("name"));
                     String name = snapshot.getString("name");
                     long points = snapshot.getLong("points");
-                    player.setText("Player: " + name + " | " + String.valueOf(points));
+                    player.setText("Player: " + name + " | " + points);
                 }
             }
         });
