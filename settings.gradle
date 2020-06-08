@@ -1,0 +1,2 @@
+rootProject.name='Scribbl'
+include ':app'

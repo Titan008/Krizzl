@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="30dp"
+    android:background="@color/colorPrimary"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/WelcomeText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/dosis_semibold"
+        android:textSize="20dp"
+        android:text="Welcome to the Krizzl-App"
+        android:textAlignment="center"
+        android:gravity="center_horizontal"
+        android:layout_marginBottom="20dp"
+        android:textColor="#000000"/>
+
+    <ImageView
+        android:id="@+id/KrizzlLogo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/WelcomeText"
+        android:background="@mipmap/paintpalette"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/Instructions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/dosis_semibold"
+        android:layout_below="@+id/KrizzlLogo"
+        android:layout_marginTop="30dp"
+        android:textSize="20dp"
+        android:textColor="#000000"
+        android:text="To start the game, please insert the generated code from your browser: "/>
+
+    <EditText
+        android:id="@+id/idText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Instructions"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:fontFamily="@font/dosis_semibold"
+        android:hint="Insert generated code here..."
+        android:inputType="number"
+        android:textSize="20dp"
+        android:textColor="#000000"
+        android:backgroundTint="@color/colorPrimaryDark"/>
+
+    <Button
+        android:id="@+id/loginButton"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/idText"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/dosis_semibold"
+        android:text="Login"
+        android:textColor="#000000"
+        android:textSize="20dp"
+        android:background="@drawable/login_button"/>
+
+    <TextView
+        android:id="@+id/CodeNotFound"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/dosis_semibold"
+        android:layout_below="@+id/loginButton"
+        android:layout_marginTop="5dp"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="15dp"
+        android:text="If you can´t find your code, please visit: www.krizzl.web.app on your browser. "
+        android:gravity="center_horizontal" />
+
+
+</RelativeLayout>

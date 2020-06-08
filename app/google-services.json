@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "695791517852",
+    "firebase_url": "https://smartstud-1c419.firebaseio.com",
+    "project_id": "smartstud-1c419",
+    "storage_bucket": "smartstud-1c419.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:695791517852:android:40af0e97740b7e1d112d59",
+        "android_client_info": {
+          "package_name": "com.example.scribbl"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "695791517852-od56so1nlms859vrosn9t75082qehqc1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDPBZbSOR8m5WYgcwi_Q6PIQcWpV0Gef-I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "695791517852-od56so1nlms859vrosn9t75082qehqc1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

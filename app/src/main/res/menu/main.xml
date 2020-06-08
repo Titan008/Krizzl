@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:icon="@drawable/ic_settings_black_48dp"
+        app:showAsAction="always"
+        android:title="">
+
+
+        <menu>
+
+            <item
+                android:id="@+id/small"
+                android:icon="@drawable/ic_fiber_manual_record_black_12dp"
+                android:title="Small"
+                app:showAsAction="never" />
+
+            <item
+                android:id="@+id/normal"
+                android:icon="@drawable/ic_fiber_manual_record_black_24dp"
+                android:title="Normal" />
+
+            <item
+                android:id="@+id/big"
+                android:icon="@drawable/ic_fiber_manual_record_black_48dp"
+                android:title="Big"
+                app:showAsAction="never" />
+
+            <item
+                android:id="@+id/clear"
+                android:icon="@drawable/ic_delete_sweep_black_24dp"
+                android:title="Clear"
+                app:showAsAction="never" />
+
+            <item
+                android:id="@+id/logout"
+                android:title="Logout"
+                android:icon="@drawable/ic_power_settings_new_black_24dp"
+                app:showAsAction="never" />
+
+        </menu>
+
+    </item>
+
+</menu>
