@@ -1,3 +1,3 @@
 # Krizzl
 
-Download APK in release folder!
+Download APK in release tab!
