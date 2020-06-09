@@ -12,19 +12,19 @@
 
             <item
                 android:id="@+id/small"
-                android:icon="@drawable/ic_fiber_manual_record_black_12dp"
+                android:icon="@drawable/ic_radiobtn_small"
                 android:title="Small"
                 app:showAsAction="never" />
 
             <item
                 android:id="@+id/normal"
-                android:icon="@drawable/ic_fiber_manual_record_black_24dp"
-                android:title="Normal" />
+                android:icon="@drawable/ic_radiobtn_med"
+                android:title="Medium" />
 
             <item
                 android:id="@+id/big"
-                android:icon="@drawable/ic_fiber_manual_record_black_48dp"
-                android:title="Big"
+                android:icon="@drawable/ic_radiobtn_big"
+                android:title="Large"
                 app:showAsAction="never" />
 
             <item
