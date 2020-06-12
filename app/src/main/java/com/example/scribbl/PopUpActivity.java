@@ -19,14 +19,13 @@ public class PopUpActivity extends AppCompatActivity {
 
     private FirebaseFirestore db;
     private String id;
-    private boolean canDraw=false;
+    private boolean canDraw = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pop_up);
-
 
         id = getIntent().getStringExtra("SignIn_ID");
 
@@ -36,15 +35,14 @@ public class PopUpActivity extends AppCompatActivity {
         int width = dm.widthPixels;
         int height = dm.heightPixels;
 
-        getWindow().setLayout((int)(width*.8), (int)(height*0.4));
+        getWindow().setLayout((int) (width * .8), (int) (height * 0.4));
 
         db = FirebaseFirestore.getInstance();
 
         getCanDraw();
-
     }
 
-    //disable back button
+
     @Override
     public void onBackPressed() {
         return;
@@ -62,11 +60,10 @@ public class PopUpActivity extends AppCompatActivity {
                     Log.w("TAG", "Listen failed.", e);
                     return;
                 }
-
                 if (snapshot != null && snapshot.exists()) {
                     Log.d("canDraw", "Current data: " + snapshot.getBoolean("canDraw"));
                     canDraw = snapshot.getBoolean("canDraw");
-                    if(canDraw){
+                    if (canDraw) {
                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                         intent.putExtra("SignIn_ID", id);
                         startActivity(intent);
@@ -77,7 +74,6 @@ public class PopUpActivity extends AppCompatActivity {
             }
 
         });
-
         return canDraw;
     }
 }

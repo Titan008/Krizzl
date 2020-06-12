@@ -45,6 +45,7 @@ public class PaintView extends View {
         this(context, null);
     }
 
+
     public PaintView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         mPaint = new Paint();
@@ -58,6 +59,7 @@ public class PaintView extends View {
         mPaint.setAlpha(0xff);
     }
 
+
     public void init(DisplayMetrics metrics) {
         height = metrics.heightPixels;
         width = metrics.widthPixels;
@@ -68,6 +70,7 @@ public class PaintView extends View {
         currentColor = DEFAULT_COLOR;
         strokeWidth = BRUSH_SIZE;
     }
+
 
     public void normal() {
         small = false;
@@ -84,6 +87,7 @@ public class PaintView extends View {
         big = true;
     }
 
+
     public void clear() {
         mBitmap.eraseColor(Color.WHITE);
         new ImageHandler().execute(mBitmap);
@@ -96,6 +100,7 @@ public class PaintView extends View {
         } else normal();
         invalidate();
     }
+
 
     public void blackColor() {
         currentColor = Color.BLACK;
@@ -162,6 +167,7 @@ public class PaintView extends View {
         mY = y;
     }
 
+
     private void touchMove(float x, float y) {
         float dx = Math.abs(x - mX);
         float dy = Math.abs(y - mY);
@@ -173,9 +179,11 @@ public class PaintView extends View {
         }
     }
 
+
     private void touchUp() {
         mPath.lineTo(mX, mY);
     }
+
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {

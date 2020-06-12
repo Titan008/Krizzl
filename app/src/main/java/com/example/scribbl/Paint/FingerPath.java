@@ -10,6 +10,7 @@ public class FingerPath {
     public int strokeWidth;
     public Path path;
 
+
     public FingerPath(int color, boolean small, boolean big, int strokeWidth, Path path) {
         this.color = color;
         this.small = small;

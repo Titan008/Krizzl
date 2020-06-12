@@ -48,7 +48,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //setting ActionBar Setting
         ActionBar actionBar = getSupportActionBar();
         actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.colorPrimaryDark)));
         actionBar.setTitle(Html.fromHtml("<font color=\"#8ED4E3\">" + "Let´s draw" + "</font>"));
@@ -64,10 +63,9 @@ public class MainActivity extends AppCompatActivity {
         getCanDraw();
         getPlayer();
 
-        if(canDraw) {
+        if (canDraw) {
             getTimer();
         }
-
 
         paintView = findViewById(R.id.paintView);
         DisplayMetrics metrics = new DisplayMetrics();
@@ -77,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
         initBtns();
     }
 
-    //disable back button
+
     @Override
     public void onBackPressed() {
         return;
@@ -118,6 +116,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
         btn_Red.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -141,6 +140,7 @@ public class MainActivity extends AppCompatActivity {
                 redSelected = true;
             }
         });
+
 
         btn_Green.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -166,6 +166,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
         btn_Blue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -189,6 +190,7 @@ public class MainActivity extends AppCompatActivity {
                 blueSelected = true;
             }
         });
+
 
         btn_Yellow.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -288,6 +290,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
@@ -329,7 +332,6 @@ public class MainActivity extends AppCompatActivity {
                     Log.w("TAG", "Listen failed.", e);
                     return;
                 }
-
                 if (snapshot != null && snapshot.exists()) {
                     Log.d("canDraw", "Current data: " + snapshot.getBoolean("canDraw"));
                     canDraw = snapshot.getBoolean("canDraw");
@@ -345,9 +347,9 @@ public class MainActivity extends AppCompatActivity {
             }
 
         });
-
         return canDraw;
     }
+
 
     private void getTimer() {
 
@@ -360,7 +362,6 @@ public class MainActivity extends AppCompatActivity {
                     Log.w("TAG", "Listen failed.", e);
                     return;
                 }
-
                 if (snapshot != null && snapshot.exists()) {
                     Map timeData = snapshot.getData();
                     Log.e("TIME", "DATA: " + timeData.get("time"));
@@ -371,8 +372,8 @@ public class MainActivity extends AppCompatActivity {
             }
 
         });
-
     }
+
 
     private void getPlayer() {
 
@@ -385,7 +386,6 @@ public class MainActivity extends AppCompatActivity {
                     Log.w("TAG", "Listen failed.", e);
                     return;
                 }
-
                 if (snapshot != null && snapshot.exists()) {
                     Log.d("DATA", "Current data: " + snapshot.getString("name"));
                     String name = snapshot.getString("name");
@@ -395,6 +395,4 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
-
 }
