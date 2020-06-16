@@ -365,7 +365,11 @@ public class MainActivity extends AppCompatActivity {
                 if (snapshot != null && snapshot.exists()) {
                     Map timeData = snapshot.getData();
                     Log.e("TIME", "DATA: " + timeData.get("time"));
-                    timer.setText("Time: " + timeData.get("time"));
+                    String data = (String) timeData.get("time");
+                    if (data.equals("TIME IS OVER!")) {
+                        timer.setText("Time: Over!");
+                    }
+                    timer.setText("Time: " + data);
                 } else {
                     Log.d("TAG", "Current data: null");
                 }
