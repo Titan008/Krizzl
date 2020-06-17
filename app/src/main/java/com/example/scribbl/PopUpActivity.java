@@ -3,7 +3,6 @@ package com.example.scribbl;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.Window;
 
 import androidx.annotation.Nullable;
@@ -15,11 +14,14 @@ import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 
+import java.util.Map;
+
 public class PopUpActivity extends AppCompatActivity {
 
     private FirebaseFirestore db;
     private String id;
     private boolean canDraw = false;
+    private boolean close = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +41,7 @@ public class PopUpActivity extends AppCompatActivity {
 
         db = FirebaseFirestore.getInstance();
 
-        getCanDraw();
+        closePopUp();
     }
 
 
@@ -49,31 +51,28 @@ public class PopUpActivity extends AppCompatActivity {
     }
 
 
-    private boolean getCanDraw() {
-
-        final DocumentReference docRef = db.collection("players").document(id);
+    private void closePopUp() {
+        final String[] data = new String[1];
+        final DocumentReference docRef = db.collection("time").document("timeID");
         docRef.addSnapshotListener(new EventListener<DocumentSnapshot>() {
             @Override
             public void onEvent(@Nullable DocumentSnapshot snapshot,
                                 @Nullable FirebaseFirestoreException e) {
                 if (e != null) {
-                    Log.w("TAG", "Listen failed.", e);
                     return;
                 }
-                if (snapshot != null && snapshot.exists()) {
-                    Log.d("canDraw", "Current data: " + snapshot.getBoolean("canDraw"));
-                    canDraw = snapshot.getBoolean("canDraw");
-                    if (canDraw) {
+                if (snapshot != null && snapshot.exists() && !close) {
+                    Map timeData = snapshot.getData();
+                    data[0] = timeData.get("time").toString();
+                    if (!(data[0].equals("TIME IS OVER!"))) {
+                        close = true;
                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                         intent.putExtra("SignIn_ID", id);
                         startActivity(intent);
+                        finish();
                     }
-                } else {
-                    Log.d("TAG", "Current data: null");
                 }
             }
-
         });
-        return canDraw;
     }
 }

@@ -22,6 +22,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 
 public class LoginActivity extends AppCompatActivity {
+
     private EditText mIDText;
     private FirebaseAuth mAuth;
 
@@ -55,13 +56,11 @@ public class LoginActivity extends AppCompatActivity {
                     intent.putExtra("SignIn_ID", id);
                     startActivity(intent);
                 }
-
-
             }
 
         });
-
     }
+
 
     private void anonymousSignIn() {
         mAuth.signInAnonymously()
