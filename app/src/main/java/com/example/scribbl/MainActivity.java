@@ -371,7 +371,6 @@ public class MainActivity extends AppCompatActivity {
                         timer.setText("Time: " + timeData.get("time"));
                     }
                 }
-
             }
         });
     }
