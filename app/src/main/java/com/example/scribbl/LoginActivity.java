@@ -55,13 +55,11 @@ public class LoginActivity extends AppCompatActivity {
                     intent.putExtra("SignIn_ID", id);
                     startActivity(intent);
                 }
-
-
             }
 
         });
-
     }
+
 
     private void anonymousSignIn() {
         mAuth.signInAnonymously()

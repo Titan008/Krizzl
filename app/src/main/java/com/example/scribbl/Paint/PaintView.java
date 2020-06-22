@@ -7,6 +7,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.os.Handler;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
@@ -39,6 +40,7 @@ public class PaintView extends View {
     private Paint mBitmapPaint = new Paint(Paint.DITHER_FLAG);
     private int height;
     private int width;
+    final Handler handler = new Handler();
 
 
     public PaintView(Context context) {
@@ -193,17 +195,21 @@ public class PaintView extends View {
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 touchStart(x, y);
-                new ImageHandler().execute(mBitmap);
                 invalidate();
                 break;
             case MotionEvent.ACTION_MOVE:
                 touchMove(x, y);
-                new ImageHandler().execute(mBitmap);
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        ImageHandler thread = new ImageHandler();
+                        thread.execute(mBitmap);
+                    }
+                }, 500);
                 invalidate();
                 break;
             case MotionEvent.ACTION_UP:
                 touchUp();
-                new ImageHandler().execute(mBitmap);
                 invalidate();
                 break;
         }
