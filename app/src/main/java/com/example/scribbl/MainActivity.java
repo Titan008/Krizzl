@@ -60,8 +60,12 @@ public class MainActivity extends AppCompatActivity {
 
         db = FirebaseFirestore.getInstance();
 
+        getCanDraw();
         getPlayer();
-        getTimer();
+
+        if (canDraw) {
+            getTimer();
+        }
 
         paintView = findViewById(R.id.paintView);
         DisplayMetrics metrics = new DisplayMetrics();
@@ -317,6 +321,35 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    private boolean getCanDraw() {
+
+        final DocumentReference docRef = db.collection("players").document(id);
+        docRef.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot snapshot,
+                                @Nullable FirebaseFirestoreException e) {
+                if (e != null) {
+                    Log.w("TAG", "Listen failed.", e);
+                    return;
+                }
+                if (snapshot != null && snapshot.exists()) {
+                    Log.d("canDraw", "Current data: " + snapshot.getBoolean("canDraw"));
+                    canDraw = snapshot.getBoolean("canDraw");
+                    if (!canDraw) {
+                        Intent intent = new Intent(getApplicationContext(), PopUpActivity.class);
+                        intent.putExtra("SignIn_ID", id);
+                        paintView.clear();
+                        startActivity(intent);
+                    }
+                } else {
+                    Log.d("TAG", "Current data: null");
+                }
+            }
+
+        });
+        return canDraw;
+    }
+
 
     private void getTimer() {
         final String[] data = new String[1];
@@ -326,6 +359,7 @@ public class MainActivity extends AppCompatActivity {
             public void onEvent(@Nullable DocumentSnapshot snapshot,
                                 @Nullable FirebaseFirestoreException e) {
                 if (e != null) {
+                    Log.w("TAG", "Listen failed.", e);
                     return;
                 }
                 if (snapshot != null && snapshot.exists()) {
@@ -333,16 +367,12 @@ public class MainActivity extends AppCompatActivity {
                     data[0] = timeData.get("time").toString();
                     if (data[0].equals("TIME IS OVER!")) {
                         timer.setText("Time: Over!");
-                        Intent intent = new Intent(getApplicationContext(), PopUpActivity.class);
-                        intent.putExtra("SignIn_ID", id);
-                        paintView.clear();
-                        startActivity(intent);
                     } else {
                         timer.setText("Time: " + timeData.get("time"));
                     }
                 }
-            }
 
+            }
         });
     }
 
@@ -355,7 +385,6 @@ public class MainActivity extends AppCompatActivity {
             public void onEvent(@Nullable DocumentSnapshot snapshot,
                                 @Nullable FirebaseFirestoreException e) {
                 if (e != null) {
-                    Log.w("TAG", "Listen failed.", e);
                     return;
                 }
                 if (snapshot != null && snapshot.exists()) {
