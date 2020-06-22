@@ -1,4 +1,4 @@
-package com.example.scribbl.Paint;
+package com.example.krizzl.Paint;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -14,7 +14,7 @@ import android.view.View;
 
 import androidx.annotation.Nullable;
 
-import com.example.scribbl.ImageHandler;
+import com.example.krizzl.ImageHandler;
 
 import java.util.ArrayList;
 

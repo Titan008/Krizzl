@@ -1,4 +1,4 @@
-package com.example.scribbl.Paint;
+package com.example.krizzl.Paint;
 
 import android.graphics.Path;
 

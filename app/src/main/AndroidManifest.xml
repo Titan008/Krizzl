@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.scribbl">
+    package="com.example.krizzl">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -16,14 +16,14 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name=".PopUpActivity"
+            android:name="com.example.krizzl.PopUpActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.PopUpTheme"
             tools:ignore="LockedOrientationActivity">
         </activity>
 
         <activity
-            android:name=".LoginActivity"
+            android:name="com.example.krizzl.LoginActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity">
             <intent-filter>
@@ -32,7 +32,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name="com.example.krizzl.MainActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity">
         </activity>

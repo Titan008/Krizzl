@@ -1,4 +1,4 @@
-package com.example.scribbl;
+package com.example.krizzl;
 
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
@@ -18,7 +18,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.scribbl.Paint.PaintView;
+import com.example.krizzl.Paint.PaintView;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.EventListener;

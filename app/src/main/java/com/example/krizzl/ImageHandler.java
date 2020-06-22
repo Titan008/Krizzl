@@ -1,4 +1,4 @@
-package com.example.scribbl;
+package com.example.krizzl;
 
 import android.graphics.Bitmap;
 import android.os.AsyncTask;

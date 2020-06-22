@@ -1,4 +1,4 @@
-package com.example.scribbl;
+package com.example.krizzl;
 
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
